@@ -1,0 +1,29 @@
+
+<table>
+  <tr>
+      <th>id</th>
+      <th>氏名</th>
+      <th>生年月日</th>
+      <th>住所</th>
+      <th>貸出本</th>
+
+  </tr>
+
+    <% @users.each do |user,i| %>
+    <tr>
+        <td> <%= user.id %></td>
+        <td> <%= user.username %></td>
+        <td> <%= user.userbirthday %></td>
+        <td> <%= user.useraddress %></td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td>
+        <%= link_to("編集", "/bookmanage/#{user.id}/user_edit")%>
+         </td>
+    </tr>
+    <% end %>
+</table>
+
+</form>

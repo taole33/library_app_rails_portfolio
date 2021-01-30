@@ -1,0 +1,26 @@
+
+<table>
+  <tr>
+      <th>図書館名</th>
+      <th></th>
+
+  </tr>
+
+    <% @libraries.each do |library| %>
+    <tr>
+        <td> <%= library.library %></td>
+        <td> </td>
+        <td><%= link_to("削除", "/bookmanage/library/#{library.id}/destroy", {method: "post"}) %>
+      </div>
+
+    </tr>
+    <% end %>
+</table>
+
+    <div class="form_group pt-4 pb-3">
+      <%= form_tag("/bookmanage/library/regist") do %>
+          <input type =text name="library">
+          <input type="submit" value="図書館新規登録">
+          
+    <% end %>
+    </div>

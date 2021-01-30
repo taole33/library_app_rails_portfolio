@@ -1,0 +1,47 @@
+<h2>貸出登録画面</h2>
+
+
+<p>貸出対象図書</p>
+<% @book.isbn %>
+<% @book.name %>
+<% @book.author %>
+
+貸出日
+
+
+貸出ユーザー
+
+
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@book,url: book_regist_path,method: :post) do |f| %>
+      <div class="form_group pt-4 pb-3">
+      <%= f.label :isbn %>
+      <%= f.text_field :isbn,placeholder: "ハイフンなしの13桁のISBN" %>
+      </div>
+
+      <div class="form_group pt-4 pb-3">
+      <%= f.label :name %>
+      <%= f.text_field :name,placeholder:"書籍名" %>
+      </div>
+
+      <div class="form_group pt-4 pb-3">
+      <%= f.label :author %>
+      <%= f.text_field :author,placeholder:"著書名" %>
+      </div>
+            
+      <div class="form_group pt-4 pb-3">
+      <%= f.label :publisher %>
+      <%= f.text_field :publisher,placeholder: "出版社" %>
+      </div>
+
+      <div class="form_group pt-4 pb-3">
+      <%= f.label :library %>
+      <%= f.text_field :library,placeholder: "所蔵図書館" %>
+      </div>
+
+      <%= f.submit "登録", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

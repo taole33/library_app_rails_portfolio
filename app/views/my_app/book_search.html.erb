@@ -1,0 +1,31 @@
+<h2>書籍検索画面</h2>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with url:"/bookmanage/book_search/",method: :post do |f| %>
+      <div class="form_group pt-4 pb-3">
+      <%= f.label :isbn %>
+      <%= f.text_field :isbn,placeholder: "ハイフンなしの13桁のISBN" %>
+      </div>
+
+      <div class="form_group pt-4 pb-3">
+      <%= f.label :name %>
+      <%= f.text_field :name,placeholder:"書籍名" %>
+      </div>
+
+      <div class="form_group pt-4 pb-3">
+      <%= f.label :author %>
+      <%= f.text_field :author,placeholder:"著書名" %>
+      </div>
+            
+      <div class="form_group pt-4 pb-3">
+      <%= f.label :publisher %>
+      <%= f.text_field :publisher,placeholder: "出版社" %>
+      </div>
+
+      <%= f.submit "検索", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+</form>

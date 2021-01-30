@@ -1,0 +1,36 @@
+<h2>書籍検索結果</h2>
+
+<table>
+  <tr>
+      <th>ISBN</th>
+      <th>書籍名</th>
+      <th>著者</th>
+      <th>所在図書館</th>
+      <th>貸出中</th>
+      <th>貸出日</th>
+      <th>返却期限</th>
+      <th>借主</th>
+      <th></th>
+      <th></th>
+  </tr>
+
+    <% @books.each do |book| %>
+    <tr>
+        <td> <%= book.isbn %></td>
+        <td> <%= book.name %></td>
+        <td> <%= book.author %></td>
+        <td> <%= book.library %></td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td>
+        <!--ここのエラーは一旦おいておく-->
+        <%= link_to("編集", "/bookmanage/#{book.id}/edit")%>
+        <%= link_to("詳細", "/bookmanage/#{book.id}/detail")%>
+         </td>
+    </tr>
+    <% end %>
+</table>
+
+</form>
