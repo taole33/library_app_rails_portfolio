@@ -1,0 +1,25 @@
+<h2>ユーザー登録画面</h2>
+
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user,url: {controller: :my_app,action: :user_registration_success},method: :post) do |f| %>
+      <div class="form_group pt-4 pb-3">
+      <%= f.label :username %>
+      <%= f.text_field :username,placeholder: "氏名" %>
+      </div>
+
+      <div class="form_group pt-4 pb-3">
+      <%= f.label :userbirthday %>
+      <%= f.date_select :userbirthday,start_year: 1900, end_year: 2022%>
+      </div>
+  
+      <div class="form_group pt-4 pb-3">
+      <%= f.label :useraddress %>
+      <%= f.text_field :useraddress,placeholder:"住所" %>
+      </div>
+
+      <%= f.submit "登録", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -31,10 +31,17 @@
       <th>借主</th>
   </tr>
   <tr>
-      <td> <%=  %></td>
-      <td> <%=  %></td>
-      <td> <%=  %></td>
-      <td> <%=  %></td>
+      <%if @book.lend_ids[0]  %>
+      <td>貸出中</td>
+      <td> <%= @lend.lenddate  %></td>
+      <td> <% returndate = @lend.lenddate + 15 %>
+           <%= returndate %></td>
+      <td> <%= @user.username %></td>
+      
+      <% else %>
+      <td>貸出されていません</td>
+      
+      <% end %>
     </tr>
 
 </table>

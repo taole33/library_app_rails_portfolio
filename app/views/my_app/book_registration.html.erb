@@ -1,11 +1,16 @@
-<h2>書籍編集画面</h2>
+<h2>書籍登録画面</h2>
+    
+    <% @book.errors.full_messages.each do |message| %>
+      <div class = "form-error text-danger">
+        <%=message %>
+      </div>
+    <%end%>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@book,url: "/bookmanage/#{@book.id}/edit/",method: :post) do |f| %>
+    <%= form_for(@book,url: {controller: :my_app,action: :registration_success},method: :post) do |f| %>
+
       <div class="form_group pt-4 pb-3">
       <%= f.label :isbn %>
-      <%= f.text_field :isbn,placeholder:"isbn" %>
+      <%= f.text_field :isbn,placeholder: "ハイフンなしの13桁のISBN" %>
       </div>
 
       <div class="form_group pt-4 pb-3">
@@ -25,10 +30,10 @@
 
       <div class="form_group pt-4 pb-3">
       <%= f.label :library %>
-      <%= f.text_field :library,placeholder: "所蔵図書館" %>
+      <%= f.fields_for :library do |g| %>
+          <%= g.collection_select(:library, @libraries, :library, :library, {:include_blank => true}) %>
       </div>
-
+      
       <%= f.submit "登録", class: "btn btn-success" %>
     <% end %>
-  </div>
-</div>
+<%end%>

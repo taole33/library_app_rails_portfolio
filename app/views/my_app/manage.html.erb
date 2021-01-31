@@ -16,10 +16,16 @@
         <td> <%= book.name %></td>
         <td> <%= book.author %></td>
         <td> <%= book.library %></td>
-        <td> </td>
+        <td> <%if book.lend_ids[0]  %>
+              貸出中
+             <% else %>
+             <% end %>
+        </td>
         <td>
-        <%= link_to("編集", "/bookmanage/#{book.id}/edit")%>
-        <%= link_to("詳細", "/bookmanage/#{book.id}/detail")%>
+        <%= button_to("編集", "/bookmanage/#{book.id}/edit", method: :get)%>
+        <%= button_to("詳細", "/bookmanage/#{book.id}/detail", method: :get)%>
+        <%= button_to("貸出", "/bookmanage/#{book.id}/lend" , method: :get)%>
+        <%= button_to("返却", "/bookmanage/#{book.id}/return" , method: :get)%>
          </td>
     </tr>
     <% end %>

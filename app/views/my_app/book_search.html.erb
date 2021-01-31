@@ -1,29 +1,36 @@
 <h2>書籍検索画面</h2>
 
+<p>貸出処理をする場合は貸出対象書籍を検索してください。</p>
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_with url:"/bookmanage/book_search/",method: :post do |f| %>
+    <%= form_tag("/bookmanage/book_search",method: :post) do%>
       <div class="form_group pt-4 pb-3">
-      <%= f.label :isbn %>
-      <%= f.text_field :isbn,placeholder: "ハイフンなしの13桁のISBN" %>
+      <%= label_tag :isbn %>
+      <%= text_field_tag :isbn,'',placeholder: "ハイフンなしの13桁のISBN" %>
       </div>
 
       <div class="form_group pt-4 pb-3">
-      <%= f.label :name %>
-      <%= f.text_field :name,placeholder:"書籍名" %>
+      <%= label_tag :name %>
+      <%= text_field_tag :name,'',placeholder:"書籍名" %>
       </div>
 
       <div class="form_group pt-4 pb-3">
-      <%= f.label :author %>
-      <%= f.text_field :author,placeholder:"著書名" %>
+      <%= label_tag :author %>
+      <%= text_field_tag :author,'',placeholder:"著書名" %>
       </div>
             
       <div class="form_group pt-4 pb-3">
-      <%= f.label :publisher %>
-      <%= f.text_field :publisher,placeholder: "出版社" %>
+      <%= label_tag :publisher %>
+      <%= text_field_tag :publisher,'',placeholder: "出版社" %>
       </div>
 
-      <%= f.submit "検索", class: "btn btn-primary" %>
+      <div class="form_group pt-4 pb-3">
+      <%= label_tag :library %>
+      <%= text_field_tag :library,'',placeholder: "所蔵図書館" %>
+      </div>
+
+      <%= submit_tag "検索", class: "btn btn-success" %>
     <% end %>
   </div>
 </div>

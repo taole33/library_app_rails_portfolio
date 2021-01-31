@@ -1,0 +1,19 @@
+<h2>返却登録画面</h2>
+
+<hr>
+<h4>貸出番号</h4>
+  <p><%= @booklend.lend_id %></P>
+ <hr>
+<h4>貸出者</h4>
+
+<P>ユーザーID:<%= @user.id %></p>
+<p>ユーザー氏名:<%= @user.username %></p>
+
+<hr>
+
+<h4>返却対象図書</h4>
+<p><%= @book.isbn %></p>
+<p><%= @book.name %></p>
+<p><%= @book.author %></p>
+
+<%= button_to "返却登録" , { controller:'my_app' , action: 'return_registration_success'}, {method: :post,data: { confirm: '返却登録しますか？' }} %>
