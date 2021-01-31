@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_30_125641) do
+ActiveRecord::Schema.define(version: 2021_01_31_081712) do
+
+  create_table "book_lends", force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "lend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_lends_on_book_id"
+    t.index ["lend_id"], name: "index_book_lends_on_lend_id"
+  end
 
   create_table "book_libraries", force: :cascade do |t|
     t.integer "book_id"
@@ -42,12 +51,17 @@ ActiveRecord::Schema.define(version: 2021_01_30_125641) do
     t.string "publisher"
   end
 
-  create_table "lends", force: :cascade do |t|
-    t.string "lenddate"
-    t.string "datetime"
+  create_table "lend_users", force: :cascade do |t|
+    t.integer "lend_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["lend_id"], name: "index_lend_users_on_lend_id"
+    t.index ["user_id"], name: "index_lend_users_on_user_id"
   end
+
+# Could not dump table "lends" because of following StandardError
+#   Unknown type 'returnday' for column 'datetime'
 
   create_table "libraries", force: :cascade do |t|
     t.string "library"
